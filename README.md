@@ -12,6 +12,9 @@
 │   ├── chat_interface.py   # 终端聊天界面实现
 │   ├── tool_caller.py      # 工具调用功能实现
 │   └── tool_chat_client.py # 带curl网络访问功能的聊天客户端
+├── practice03/
+│   ├── chat_summary.py     # 聊天记录总结和压缩功能实现
+│   └── chat_history_logger.py # 聊天历史记录和搜索功能实现
 ├── .gitignore             # Git忽略文件
 ├── env.example            # 环境变量配置模板
 └── README.md              # 项目说明文档
@@ -226,6 +229,127 @@ AI响应: 已成功访问GitHub首页，返回状态码200。
 
 Token Usage: 180, Time: 2.10s, Speed: 85.71 tokens/s
 --------------------------------------------------
+```
+
+### Practice 03: 聊天记录总结和压缩功能
+
+**文件**: `practice03/chat_summary.py`
+
+**功能用途**:
+- 提供交互式终端聊天界面
+- 支持流式输出（边生成边显示）
+- 自动维护聊天历史记录
+- 聊天历史记录检测和压缩
+- 支持Ctrl+C退出
+- 实时显示性能指标
+
+**实现的教学目标**:
+1. **聊天历史管理**: 学习如何管理和维护聊天上下文
+2. **自动总结功能**: 掌握使用LLM对聊天历史进行总结的方法
+3. **上下文压缩**: 理解如何在保持对话连贯性的同时减少上下文长度
+4. **性能优化**: 学习如何通过压缩上下文来提高LLM的响应速度和降低token消耗
+5. **用户体验优化**: 理解如何在后台执行总结操作而不影响用户体验
+
+**核心知识点**:
+- 聊天历史管理和检测
+- LLM总结功能实现
+- 上下文长度计算和控制
+- 流式API处理
+- 性能实时计算
+
+**运行方式**:
+```bash
+python practice03/chat_summary.py
+```
+
+**使用示例**:
+```
+=== LLM Chat Interface with Summary ===
+Type your message and press Enter. Press Ctrl+C to exit.
+=======================================
+
+You: Hello
+Assistant: Hi there! How can I help you today?
+
+[Token Usage: 20, Time: 1.50s, Speed: 13.33 tokens/s]
+[Chat History Length: 2 messages, Context Length: 50 characters]
+
+... 多轮对话后 ...
+
+检测到聊天历史过长，正在进行压缩...
+聊天历史压缩完成！
+
+You: What was our previous conversation about?
+Assistant: Based on our previous conversation summary, we discussed...
+
+[Token Usage: 150, Time: 2.30s, Speed: 65.22 tokens/s]
+[Chat History Length: 5 messages, Context Length: 1200 characters]
+```
+
+### Practice 03b: 聊天历史记录和搜索功能
+
+**文件**: `practice03/chat_history_logger.py`
+
+**功能用途**:
+- 提供交互式终端聊天界面
+- 支持流式输出（边生成边显示）
+- 自动维护聊天历史记录
+- 每五次聊天提取一次关键信息
+- 按照5W规则（Who、What、When、Where、Why）提取关键信息
+- 将关键信息记录到本地文件 `D:\chat-log\log.txt`
+- 支持通过 `/search` 命令或表达"查找聊天历史"的意思来搜索聊天历史
+- 支持Ctrl+C退出
+- 实时显示性能指标
+
+**实现的教学目标**:
+1. **关键信息提取**: 学习如何使用LLM按照特定规则提取关键信息
+2. **本地文件操作**: 掌握Python文件和目录的创建、读写操作
+3. **工具调用系统**: 学习如何设计和实现工具调用功能
+4. **聊天历史管理**: 理解如何有效管理和利用聊天历史记录
+5. **用户交互优化**: 学习如何通过命令和自然语言触发特定功能
+
+**核心知识点**:
+- 5W规则信息提取
+- 本地文件系统操作
+- OpenAI工具调用API
+- 聊天历史管理和搜索
+- 流式API处理
+
+**运行方式**:
+```bash
+python practice03/chat_history_logger.py
+```
+
+**使用示例**:
+```
+=== LLM Chat Interface with History Logger ===
+Type your message and press Enter. Press Ctrl+C to exit.
+Use '/search' to search chat history.
+==============================================
+
+You: Hello
+Assistant: Hi there! How can I help you today?
+
+[Token Usage: 20, Time: 1.50s, Speed: 13.33 tokens/s]
+[Chat History Length: 2 messages, Context Length: 50 characters]
+[Conversation Count: 1]
+
+... 多轮对话后 ...
+
+正在提取关键信息...
+关键信息已记录到: D:\chat-log\log.txt
+
+You: /search 之前我们聊了什么
+执行工具: search_chat_history
+工具执行结果: {"success": true, "content": "[2026-04-26 22:30:00]\n1. Who: 用户\n   What: 向助手打招呼\n   When: 2026-04-26 22:30\n   Why: 开始对话\n\n2. Who: 助手\n   What: 回应用户并询问如何帮助\n   When: 2026-04-26 22:30\n   Why: 响应用户的问候\n------------------------------", "query": "/search 之前我们聊了什么"}
+
+Assistant: 根据聊天历史记录，之前我们的对话内容是：
+1. 用户向助手打招呼，开始对话
+2. 助手回应用户并询问如何帮助
+
+[Token Usage: 150, Time: 2.30s, Speed: 65.22 tokens/s]
+[Chat History Length: 10 messages, Context Length: 1500 characters]
+[Conversation Count: 5]
 ```
 
 ## 技术栈
