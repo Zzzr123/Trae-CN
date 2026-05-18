@@ -133,7 +133,7 @@ def extract_key_information(chat_history, host, path, headers, model):
         return "关键信息提取失败"
 
 def log_key_information(key_info):
-    log_dir = "D:\chat-log"
+    log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'chat-log')
     log_file = os.path.join(log_dir, "log.txt")
 
     if not os.path.exists(log_dir):
@@ -147,7 +147,7 @@ def log_key_information(key_info):
     print(f"关键信息已记录到: {log_file}")
 
 def search_chat_history(query):
-    log_file = "D:\chat-log\log.txt"
+    log_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'chat-log', 'log.txt')
 
     if not os.path.exists(log_file):
         return {"success": False, "error": "聊天历史文件不存在"}
