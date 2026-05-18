@@ -5,9 +5,7 @@ import time
 from http.client import HTTPSConnection, HTTPConnection
 from urllib.parse import urlparse, quote
 
-# 强制设置 Python 默认编码为 UTF-8
-sys.stdout.reconfigure(encoding='utf-8')
-sys.stderr.reconfigure(encoding='utf-8')
+
 
 # curl网络访问函数
 def curl_get(url):
