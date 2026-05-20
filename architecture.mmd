@@ -1,0 +1,70 @@
+```mermaid
+graph TD
+    A[AI Agent系统学习讲义] --> B[核心概念体系]
+    A --> C[提示词工程]
+    A --> D[开发环境与基础调用]
+    A --> E[Function Calling]
+    A --> F[RAG与上下文管理]
+    A --> G[Skill技能封装]
+    A --> H[链式工具调用]
+    A --> I[SPEC驱动开发]
+
+    B --> B1[基础概念]
+    B --> B2[进阶概念]
+    B --> B3[模型架构参数]
+    B1 --> B1a[Prompt/Token/Context]
+    B2 --> B2a[RAG/Function Calling]
+    B2 --> B2b[Skill/Agent]
+    B3 --> B3a[XXB/MoE/量化]
+
+    C --> C1[基础技巧]
+    C --> C2[进阶技巧]
+    C --> C3[输出格式控制]
+    C1 --> C1a[角色定义/输出控制]
+    C2 --> C2a[主动询问/风格复刻]
+
+    D --> D1[模型获取途径]
+    D --> D2[开发环境配置]
+    D --> D3[API调用流程]
+    D1 --> D1a[本地部署/LM Studio]
+    D1 --> D1b[在线API/OpenRouter]
+
+    E --> E1[核心原理]
+    E --> E2[工具定义规范]
+    E --> E3[常见工具类型]
+    E3 --> E3a[文件操作/网络访问]
+    E3 --> E3b[数据库/RAG查询]
+
+    F --> F1[RAG检索增强]
+    F --> F2[上下文压缩]
+    F --> F3[关键信息提取]
+    F1 --> F1a[AnythingLLM]
+    F3 --> F3a[5W提取规则]
+
+    G --> G1[Skill定义]
+    G --> G2[目录结构]
+    G --> G3[文件格式]
+    G1 --> G1a[SKILL.md规范]
+    G2 --> G2a[.agents/skills/]
+
+    H --> H1[链式推理概念]
+    H --> H2[核心组件]
+    H --> H3[应用场景]
+    H2 --> H2a[消息历史/决策解析器]
+    H2 --> H2b[上下文管理器]
+
+    I --> I1[SPEC范式]
+    I --> I2[四大核心文档]
+    I --> I3[开发流程]
+    I2 --> I2a[spec/requirement/api/test]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:1px
+    style C fill:#bbf,stroke:#333,stroke-width:1px
+    style D fill:#bbf,stroke:#333,stroke-width:1px
+    style E fill:#bbf,stroke:#333,stroke-width:1px
+    style F fill:#bbf,stroke:#333,stroke-width:1px
+    style G fill:#bbf,stroke:#333,stroke-width:1px
+    style H fill:#bbf,stroke:#333,stroke-width:1px
+    style I fill:#bbf,stroke:#333,stroke-width:1px
+```
